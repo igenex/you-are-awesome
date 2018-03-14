@@ -89,7 +89,7 @@ const getDeepPropertiesCount = (obj) => {
 
 const createSerializedObject = () => {
   "use strict";
-
+  return Object.create(null);
 };
 
 const object = createSerializedObject();
@@ -99,7 +99,12 @@ console.log(JSON.parse(JSON.stringify(object)), object);
 
 const toBuffer = () => {
 };
-const sortByProto = () => {
+const sortByProto = (obj) => {
+  obj.sort((a,b) => {
+    "use strict";
+    return a.__proto__ - b.__proto__;
+  });
+  return obj;
 };
 
 exports.createEnumerableProperty = createEnumerableProperty;
